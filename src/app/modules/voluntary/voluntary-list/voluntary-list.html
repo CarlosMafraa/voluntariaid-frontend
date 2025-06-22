@@ -1,0 +1,67 @@
+<table
+  tuiTable
+  class="table"
+  [columns]="columns()">
+  <thead>
+  <tr tuiThGroup>
+    <th
+      tuiTh>
+      Id
+    </th>
+    <th
+      tuiTh
+      [resizable]="true"
+      [style.width.rem]="30">
+      Nome Completo
+    </th>
+    <th tuiTh>Idade</th>
+    <th tuiTh>Situação de Saúde</th>
+    <th tuiTh>Ações</th>
+  </tr>
+  </thead>
+  <tbody
+    tuiTbody
+    [data]="data()">
+    @for (item of data(); track item) {
+      <tr tuiTr>
+        <td
+          *tuiCell="'id'"
+          tuiTd>
+          {{ item.id }}
+        </td>
+        <td
+          *tuiCell="'nomeCompleto'"
+          tuiTd>
+          {{ item.nomeCompleto }}
+        </td>
+        <td
+          *tuiCell="'idade'"
+          tuiTd>
+          {{ item.idade }}
+        </td>
+        <td
+          *tuiCell="'situacaoSaude'"
+          tuiTd>
+          {{ item.situacaoSaude }}
+        </td>
+        <td tuiTd>
+          <div>
+            <div>
+              <img
+                alt=""
+                [src]="'@tui.material.filled.visibility' | tuiIcon"
+              />
+            </div>
+            <div>
+              <img
+                alt=""
+                [style.color]="'var(--tui-status-negative)'"
+                [src]="'@tui.material.filled.delete' | tuiIcon"
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
