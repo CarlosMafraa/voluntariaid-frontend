@@ -1,1 +1,207 @@
-<p>voluntary-form works!</p>
+<div class="form-container">
+  <h1 class="title">Cadastro de Voluntário</h1>
+  <form [formGroup]="voluntaryForm" (ngSubmit)="onSubmit()" class="voluntario-form">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="mb-3">Dados Pessoais</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid">
+          <div class="col-8">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Nome Completo</mat-label>
+              <input matInput formControlName="nomeCompleto" required>
+              @if (voluntaryForm.get('nomeCompleto')?.hasError('required')) {
+                <mat-error>
+                  Nome é obrigatório
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="col-4">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>CPF</mat-label>
+              <input matInput formControlName="cpf" mask="000.000.000-00" required>
+              @if (voluntaryForm.get('cpf')?.hasError('required')) {
+                <mat-error>
+                  CPF é obrigatório
+                </mat-error>
+              }
+              @if (voluntaryForm.get('cpf')?.hasError('pattern')) {
+                <mat-error>
+                  CPF inválido
+                </mat-error>
+              }
+
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Passaporte</mat-label>
+              <input matInput formControlName="passaporte" required>
+              @if (voluntaryForm.get('passaporte')?.hasError('required')) {
+                <mat-error>
+                  Passaporte é obrigatório
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="col-4">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Data de Nascimento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dataNascimento" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              @if (voluntaryForm.get('dataNascimento')?.hasError('required')) {
+                <mat-error>
+                  Data de nascimento é obrigatória
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Idade</mat-label>
+              <input matInput formControlName="idade" readonly>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="my-4">
+      <mat-card-header>
+        <mat-card-title class="mb-3">Informações de Contato</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid">
+          <div class="col-8">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>E-mail</mat-label>
+              <input matInput formControlName="email" type="email" required>
+              @if (voluntaryForm.get('email')?.hasError('required')) {
+                <mat-error>
+                  E-mail é obrigatório
+                </mat-error>
+              }
+              @if (voluntaryForm.get('email')?.hasError('email')) {
+                <mat-error>
+                  E-mail inválido
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Telefone</mat-label>
+              <input matInput formControlName="telefone" mask="(00) 00000-0000" required>
+              @if (voluntaryForm.get('telefone')?.hasError('required')) {
+                <mat-error>
+                  Telefone é obrigatório
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="my-4">
+      <mat-card-header>
+        <mat-card-title class="mb-3">Informações Profissionais</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid">
+          <div class="col-8">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Profissão</mat-label>
+              <input matInput formControlName="profissao" required>
+              @if (voluntaryForm.get('profissao')?.hasError('required')) {
+                <mat-error>
+                  Profissão é obrigatória
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Anos de Experiência</mat-label>
+              <input matInput formControlName="anosExperiencia" type="number" min="3" required>
+              @if (voluntaryForm.get('anosExperiencia')?.hasError('required')) {
+                <mat-error>
+                  Anos de experiência são obrigatórios
+                </mat-error>
+              }
+              @if (voluntaryForm.get('anosExperiencia')?.hasError('min')) {
+                <mat-error>
+                  Mínimo 3 anos de experiência
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="my-4">
+      <mat-card-header>
+        <mat-card-title class="mb-3">Informações de Saúde</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid">
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Tipo Sanguíneo</mat-label>
+              <mat-select [formControl]="tipoSanguineoControl">
+                @for (tipo of tipoSanguineoOptions(); track tipo) {
+                  <mat-option [value]="tipo">
+                    {{ formatTipoSanguineo(tipo) }}
+                  </mat-option>
+                }
+              </mat-select>
+              @if (voluntaryForm.get('tipoSanguineo')?.hasError('required')) {
+                <mat-error>
+                  Tipo sanguíneo é obrigatório
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Situação de Saúde</mat-label>
+              <mat-select [formControl]="situacaoSaudeControl" required>
+                @for (situacao of situacaoSaudeOptions(); track situacao) {
+                  <mat-option [value]="situacao">
+                    {{ situacao | titlecase }}
+                  </mat-option>
+                }
+              </mat-select>
+              @if (voluntaryForm.get('situacaoSaude')?.hasError('required')) {
+                <mat-error>
+                  Situação de saúde é obrigatória
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    @if (!isPresent()) {
+      <div class="flex justify-content-center gap-4 my-6">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!voluntaryForm.valid">
+          Cadastrar
+        </button>
+        <button mat-raised-button color="warn" type="button" (click)="onCancel()">
+          Cancelar
+        </button>
+      </div>
+    } @else {
+      <br>
+      <br>
+    }
+  </form>
+</div>

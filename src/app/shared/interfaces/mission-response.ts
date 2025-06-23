@@ -1,6 +1,6 @@
 import {Avaliacao} from '../enums/avaliacao';
-import {VoluntarioResponse} from './voluntario-response';
 import {Cidade} from './cidade';
+import {VoluntaryResponse} from './voluntario-response';
 
 export interface MissionResponse {
   id: number;
@@ -9,5 +9,5 @@ export interface MissionResponse {
   avaliacaoFinal: Avaliacao;
   parecerCoordenador: string;
   cidade: Cidade;
-  voluntario: VoluntarioResponse;
+  voluntario: VoluntaryResponse;
 }

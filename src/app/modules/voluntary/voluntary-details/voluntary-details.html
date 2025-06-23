@@ -1,1 +1,4 @@
-<p>voluntary-details works!</p>
+@defer(when voluntary()){
+  <app-voluntary-form [voluntary]="voluntary()"></app-voluntary-form>
+}
+
