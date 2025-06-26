@@ -1,0 +1,21 @@
+.item {
+  //border: 1px solid var(--prymary-color);
+  border-radius: 2px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.marcar {
+  height: 40px;
+  width: 5px;
+  border-radius: 5px;
+}
+
+.item:hover .marcar {
+  background-color: var(--prymary-color);
+}
+
+.item:hover{
+  color: var(--prymary-color);
+  background-color: var(--second-color);
+
+}

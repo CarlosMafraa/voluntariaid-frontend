@@ -30,6 +30,7 @@
     "@taiga-ui/icons-material": "^4.41.0",
     "@taiga-ui/kit": "^4.41.0",
     "@taiga-ui/layout": "^4.41.0",
+    "ngx-mask": "^19.0.7",
     "primeflex": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

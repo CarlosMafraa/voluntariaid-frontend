@@ -97,7 +97,7 @@
           <div class="col-4">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Telefone</mat-label>
-              <input matInput formControlName="telefone" mask="(00) 00000-0000" required>
+              <input matInput formControlName="telefone" mask="(00) 0 0000-0000" required>
               @if (voluntaryForm.get('telefone')?.hasError('required')) {
                 <mat-error>
                   Telefone é obrigatório

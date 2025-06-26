@@ -15,7 +15,7 @@ import {VoluntaryResponse} from '../../../shared/interfaces/voluntario-response'
 export class VoluntaryDetails implements OnInit {
   private route: ActivatedRoute = inject(ActivatedRoute);
   private service: VoluntaryService = inject(VoluntaryService)
-  public voluntary = signal<VoluntaryResponse | null>(null);
+  public voluntary = signal<VoluntaryResponse| undefined>(undefined);
 
 
   ngOnInit() {

@@ -1,9 +1,10 @@
 import {inject, Injectable, signal} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment.development';
 import {lastValueFrom} from 'rxjs';
 import {MissionCreate} from '../../shared/interfaces/mission-create';
 import {MissionResponse} from '../../shared/interfaces/mission-response';
+import {PageResponse} from '../../shared/interfaces/page-response';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,16 @@ export class MissionService {
     lastValueFrom(this.http.get<MissionResponse>(`${this.apiUrl()}/${mission_id}`)).then(r => (r))
   }
 
-  public getMission(): void{
-    lastValueFrom(this.http.get<MissionResponse[]>(this.apiUrl())).then(r => (r))
+  public getMission(page: number = 0, size: number = 10): Promise<PageResponse<MissionResponse>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return lastValueFrom(
+      this.http.get<PageResponse<MissionResponse>>(this.apiUrl(), { params })
+    );
   }
+
 
   public deleteMission(mission_id: number): void{
     lastValueFrom(this.http.delete<MissionResponse>(`${this.apiUrl()}/${mission_id}`)).then(r => (r))

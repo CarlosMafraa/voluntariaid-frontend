@@ -1,7 +1,15 @@
-.trash{
-  color:red;
+.view {
+  color: var(--prymary-color);
+  &:hover {
+    background-color: var(--prymary-color);
+    color: var(--color-white);
+  }
 }
 
-.view{
-  color:blue;
+.trash {
+  color: var(--color-red);
+  &:hover {
+    background-color: var(--color-red);
+    color: var(--color-white);
+  }
 }

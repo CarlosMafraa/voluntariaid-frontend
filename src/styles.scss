@@ -1,4 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--color-white);
+}
+
+:root {
+  --prymary-color: #1469C0;
+  --second-color: #D7E3FF;
+  --color-white: #FFF8F8;
+  --color-red: #8F0045;
+  --color-black: #000000;
+  --color-gray-light: #DFDEE2;
+  --color-gray-dark: #949498;
+}
+
+.mat-mdc-table{
+  background-color: var(--color-white) !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 15px;
+}
+.mat-mdc-cell{
+  border-color: 1px solid var(--color-black-white) !important;
+}
+.mat-mdc-paginator-container{
+  background-color: var(--color-white) !important;
+
+}
+.mat-mdc-table thead{
+  background-color: var(--color-gray-dark) !important;
+}
+
+.mat-mdc-row:hover{
+  background-color: var(--color-gray-light) !important;
+}

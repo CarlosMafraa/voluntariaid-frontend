@@ -1,1 +1,140 @@
-<p>mission-form works!</p>
+<div class="form-container">
+  <h1 class="title">Cadastro de Missão</h1>
+  <form [formGroup]="missaoForm" (ngSubmit)="onSubmit()" class="missao-form">
+
+    <mat-card class="form-section">
+      <mat-card-header>
+        <mat-card-title>Voluntário</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Selecione o Voluntário</mat-label>
+          <mat-select formControlName="voluntarioId" required>
+            @for (voluntario of voluntarios(); track voluntario) {
+              <mat-option [value]="voluntario.id">
+                {{ voluntario.nomeCompleto }} ({{ voluntario.profissao }} - {{ voluntario.anosExperiencia }} anos exp.)
+              </mat-option>
+            }
+          </mat-select>
+          @if (missaoForm.get('voluntarioId')?.hasError('required')) {
+            <mat-error>
+              Seleção do voluntário é obrigatória
+            </mat-error>
+          }
+
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="form-section">
+      <mat-card-header>
+        <mat-card-title>Período da Missão</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <mat-form-field appearance="fill" class="half-width">
+            <mat-label>Data de Início</mat-label>
+            <input matInput [matDatepicker]="inicioPicker" formControlName="dataInicio" required>
+            <mat-datepicker-toggle matSuffix [for]="inicioPicker"></mat-datepicker-toggle>
+            <mat-datepicker #inicioPicker></mat-datepicker>
+            @if (missaoForm.get('dataInicio')?.hasError('required')) {
+              <mat-error>
+                Data de início é obrigatória
+              </mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="half-width">
+            <mat-label>Data de Término</mat-label>
+            <input matInput [matDatepicker]="fimPicker" formControlName="dataFim" required>
+            <mat-datepicker-toggle matSuffix [for]="fimPicker"></mat-datepicker-toggle>
+            <mat-datepicker #fimPicker></mat-datepicker>
+            @if (missaoForm.get('dataFim')?.hasError('required')) {
+              <mat-error>
+                Data de término é obrigatória
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Localização -->
+    <mat-card class="form-section">
+      <mat-card-header>
+        <mat-card-title>Local de Atuação</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Cidade</mat-label>
+          <mat-select formControlName="cidadeId" required>
+            @for (pais of paises(); track pais) {
+              <mat-optgroup [label]="pais.nome">
+<!--                @for (cidade of pais.cidades(); track cidade) {-->
+<!--                  <mat-option [value]="cidade.id">-->
+<!--                    {{ cidade.nome }} - {{ pais.nome }}-->
+<!--                  </mat-option>-->
+<!--                }-->
+              </mat-optgroup>
+            }
+
+          </mat-select>
+          @if(missaoForm.get('cidadeId')?.hasError('required')){
+            <mat-error>
+              Seleção da cidade é obrigatória
+            </mat-error>
+          }
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="form-section">
+      <mat-card-header>
+        <mat-card-title>Avaliação</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill" class="half-width">
+          <mat-label>Avaliação Final</mat-label>
+          <mat-select formControlName="avaliacaoFinal" required>
+            @for(avaliacao of avaliacoes(); track avaliacao){
+              <mat-option [value]="avaliacao.value">
+                {{ avaliacao.viewValue }}
+              </mat-option>
+            }
+          </mat-select>
+          @if(missaoForm.get('avaliacaoFinal')?.hasError('required')){
+            <mat-error>
+              Avaliação é obrigatória
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Parecer do Coordenador</mat-label>
+          <textarea matInput formControlName="parecerCoordenador"
+                    maxlength="500"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="3"
+                    cdkAutosizeMaxRows="5"></textarea>
+<!--          <mat-hint align="end">{{ missaoForm.get('parecerCoordenador')?.value?.length || 0 }}/500</mat-hint>-->
+<!--          @if(missaoForm.get('parecerCoordenador')?.hasError('maxlength')){-->
+<!--            <mat-error>-->
+<!--              Máximo 500 caracteres-->
+<!--            </mat-error>-->
+<!--          }-->
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="missaoForm.invalid">
+        <mat-icon>save</mat-icon>
+        Salvar Missão
+      </button>
+      <button mat-raised-button color="warn" type="button" (click)="onCancel()">
+        <mat-icon>cancel</mat-icon>
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
