@@ -1,0 +1,58 @@
+<div>
+  <div class="flex justify-content-end mb-4">
+    <button matButton="filled" routerLink="/voluntaryForm">
+      <mat-icon>add</mat-icon>
+      Adicionar
+    </button>
+  </div>
+  <div>
+    <table mat-table [dataSource]="data()" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let item">{{item.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeCompleto">
+        <th mat-header-cell *matHeaderCellDef [style.width.rem]="30">Nome Completo</th>
+        <td mat-cell *matCellDef="let item">{{item.nomeCompleto}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="idade">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Idade</th>
+        <td mat-cell *matCellDef="let item" class="text-center">{{item.idade}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="situacaoSaude">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Situação de Saúde</th>
+        <td mat-cell *matCellDef="let item" class="text-center">{{item.situacaoSaude | titlecase}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Ações</th>
+        <td mat-cell *matCellDef="let item">
+          <div class="flex justify-content-center">
+            <button mat-icon-button class="view" [routerLink]="['/voluntaryDetails', item.id]">
+              <mat-icon color="red">visibility</mat-icon>
+            </button>
+            <button mat-icon-button (click)="excluir(item.id)" class="trash">
+              <mat-icon >delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div>
+    <mat-paginator [length]="totalElements()"
+                   [pageSize]="pageSize()"
+                   [pageIndex]="pageIndex()"
+                   [pageSizeOptions]="pageSizeOptions()"
+                   (page)="onPageChange($event)"
+                   aria-label="Selecionar página">
+    </mat-paginator>
+  </div>
+</div>
+

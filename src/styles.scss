@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --prymary-color: #1469C0;
+  --second-color: #D7E3FF;
+  --color-white: #FFF8F8;
+  --color-red: #8F0045;
+  --color-black: #000000;
+  --color-gray-light: #DFDEE2;
+  --color-gray-dark: #949498;
+  --color-gray-header: #F1F5F9;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--color-white);
+}
+
+.mat-mdc-table {
+  background-color: var(--color-white) !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.mat-mdc-header-cell {
+  background-color: var(--color-gray-header) !important;
+  font-weight: bold;
+  color: var(--color-black);
+  font-size: 14px;
+  padding: 12px;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.mat-mdc-cell {
+  font-size: 14px;
+  padding: 12px;
+  border-bottom: 1px solid var(--color-gray-light);
+  color: var(--color-black);
+}
+
+.mat-mdc-row:hover {
+  background-color: var(--color-gray-light) !important;
+  cursor: pointer;
+}
+
+.mat-mdc-paginator-container {
+  background-color: var(--color-white) !important;
+  padding: 0 8px;
+  border-top: 1px solid var(--color-gray-light);
+}
+.view, .trash {
+  border-radius: 6px;
+  padding: 6px;
+  transition: background-color 0.2s ease;
+}

@@ -1,0 +1,21 @@
+<div class="flex flex-column py-4 pl-1 pr-2 gap-1 ">
+  <div class="flex justify-content-center my-2">
+    <img ngSrc="/logo.png" width="100" height="100" alt="" class="logo">
+  </div>
+  <div class="py-2 cursor-pointer item flex align-items-center"
+       routerLink="mission"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: false }">
+    <div class="marcar"></div>
+    <span class="ml-2">Missão</span>
+  </div>
+
+  <div class="py-2 cursor-pointer item flex align-items-center"
+       routerLink="voluntary"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: false }">
+    <div class="marcar"></div>
+    <span class="ml-2">Voluntário</span>
+  </div>
+
+</div>
