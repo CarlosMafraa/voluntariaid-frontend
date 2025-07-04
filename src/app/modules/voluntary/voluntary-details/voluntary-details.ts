@@ -2,7 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {VoluntaryForm} from '../voluntary-form/voluntary-form';
 import {ActivatedRoute} from '@angular/router';
 import {VoluntaryService} from '../../../services/voluntary/voluntary-service';
-import {VoluntaryResponse} from '../../../shared/interfaces/voluntario-response';
+import {VoluntaryResponse} from '../../../shared/interfaces/voluntary-response';
 
 @Component({
   selector: 'app-voluntary-details',

@@ -2,7 +2,7 @@ import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment.development';
 import {firstValueFrom, lastValueFrom} from 'rxjs';
-import {VoluntaryResponse} from '../../shared/interfaces/voluntario-response';
+import {VoluntaryResponse} from '../../shared/interfaces/voluntary-response';
 import {VoluntaryCreate} from '../../shared/interfaces/voluntary-create';
 import {PageResponse} from '../../shared/interfaces/page-response';
 
@@ -30,6 +30,12 @@ export class VoluntaryService {
       this.http.get<PageResponse<VoluntaryResponse>>(this.apiUrl(), { params })
     );
   }
+
+  public getVoluntarios(): Promise<VoluntaryResponse[]> {
+    return firstValueFrom(this.http.get<VoluntaryResponse[]>(`${this.apiUrl()}/`)).then(r => (r));
+  }
+
+
 
   public deleteVoluntary(voluntary_id: number): Promise<VoluntaryResponse> {
     return firstValueFrom(this.http.delete<VoluntaryResponse>(`${this.apiUrl()}/${voluntary_id}`)).then(r => (r))

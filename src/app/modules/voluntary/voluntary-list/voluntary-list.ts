@@ -1,6 +1,6 @@
 import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {VoluntaryService} from '../../../services/voluntary/voluntary-service';
-import {VoluntaryResponse} from '../../../shared/interfaces/voluntario-response';
+import {VoluntaryResponse} from '../../../shared/interfaces/voluntary-response';
 import {
   MatCell,
   MatCellDef,
@@ -50,7 +50,12 @@ export class VoluntaryList implements OnInit {
   public pageSizeOptions = signal<number[]>([5, 10, 25, 100]);
 
   ngOnInit() {
+    this.list();
+  }
+
+  private list() {
     this.getVoluntary(this.pageIndex(), this.pageSize());
+
   }
 
   private getVoluntary(page: number, size: number): void {
@@ -62,13 +67,15 @@ export class VoluntaryList implements OnInit {
     }).finally()
   }
 
-  public visualizar(item: VoluntaryResponse): void {
-
-  }
 
   public excluir(item_id: number): void {
-    console.log('Excluir:', item_id);
-    // Implemente a lógica de exclusão aqui
+    this.service.deleteVoluntary(item_id).then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.log(error);
+    }).finally(() =>{
+        this.list();
+      })
   }
 
   public onPageChange(event: PageEvent) {
@@ -76,6 +83,6 @@ export class VoluntaryList implements OnInit {
     this.pageIndex.set(event.pageIndex);
     this.pageSize.set(event.pageSize);
     console.log(event.pageIndex, event.pageSize)
-    this.getVoluntary(this.pageIndex(), this.pageSize());
+    this.list();
   }
 }

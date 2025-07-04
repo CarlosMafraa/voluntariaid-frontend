@@ -192,10 +192,12 @@
 
     @if (!isPresent()) {
       <div class="flex justify-content-center gap-4 my-6">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!voluntaryForm.valid">
-          Cadastrar
+        <button mat-raised-button color="primary" type="submit" [disabled]="voluntaryForm.invalid">
+          <mat-icon>save</mat-icon>
+          Salvar Voluntário
         </button>
         <button mat-raised-button color="warn" type="button" (click)="onCancel()">
+          <mat-icon>cancel</mat-icon>
           Cancelar
         </button>
       </div>

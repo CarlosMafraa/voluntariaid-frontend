@@ -9,11 +9,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {TitleCasePipe} from '@angular/common';
-import {VoluntaryResponse} from '../../../shared/interfaces/voluntario-response';
+import {VoluntaryResponse} from '../../../shared/interfaces/voluntary-response';
 import {VoluntaryCreate} from '../../../shared/interfaces/voluntary-create';
 import {VoluntaryService} from '../../../services/voluntary/voluntary-service';
 import {Router} from '@angular/router';
 import {NgxMaskDirective} from 'ngx-mask';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-voluntary-form',
@@ -27,7 +28,8 @@ import {NgxMaskDirective} from 'ngx-mask';
     MatFormFieldModule,
     MatDatepickerModule,
     TitleCasePipe,
-    NgxMaskDirective
+    NgxMaskDirective,
+    MatIcon
   ],
   templateUrl: './voluntary-form.html',
   styleUrl: './voluntary-form.scss'
@@ -41,17 +43,6 @@ export class VoluntaryForm implements OnInit {
   readonly situacaoSaudeOptions: WritableSignal<SituacaoSaude[]> = signal(Object.values(SituacaoSaude));
   public voluntary = input<VoluntaryResponse>();
   public isPresent = signal(false);
-
-  // constructor() {
-  //   effect(() => {
-  //     const voluntary = this.voluntary();
-  //     if (voluntary) {
-  //       this.voluntaryForm.patchValue(voluntary);
-  //       this.isPresent.set(true);
-  //       this.disableFieldsForEdit();
-  //     }
-  //   });
-  // }
 
   ngOnInit(): void {
     this.initForm();

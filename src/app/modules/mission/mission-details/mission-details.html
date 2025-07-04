@@ -1,1 +1,3 @@
-<p>mission-details works!</p>
+@defer(when mission()){
+  <app-mission-form [mission]="mission()"></app-mission-form>
+}

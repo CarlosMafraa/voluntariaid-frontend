@@ -14,15 +14,15 @@ export class MissionService {
   private apiUrl = signal(`${environment.apiUrl}/missoes`);
 
 
-  public createMission(mission: MissionCreate): void{
-    lastValueFrom(this.http.post<MissionResponse>(this.apiUrl(), mission)).then(r => (r))
+  public createMission(mission: MissionCreate): Promise<MissionResponse> {
+    return lastValueFrom(this.http.post<MissionResponse>(this.apiUrl(), mission))
   }
 
-  public getByIdMission(mission_id: number): void{
-    lastValueFrom(this.http.get<MissionResponse>(`${this.apiUrl()}/${mission_id}`)).then(r => (r))
+  public getByIdMission(mission_id: number): Promise<MissionResponse> {
+    return lastValueFrom(this.http.get<MissionResponse>(`${this.apiUrl()}/${mission_id}`)).then(r => (r))
   }
 
-  public getMission(page: number = 0, size: number = 10): Promise<PageResponse<MissionResponse>> {
+  public getMission(page: number, size: number): Promise<PageResponse<MissionResponse>> {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
@@ -33,7 +33,7 @@ export class MissionService {
   }
 
 
-  public deleteMission(mission_id: number): void{
-    lastValueFrom(this.http.delete<MissionResponse>(`${this.apiUrl()}/${mission_id}`)).then(r => (r))
+  public deleteMission(mission_id: number):Promise<MissionResponse>{
+    return lastValueFrom(this.http.delete<MissionResponse>(`${this.apiUrl()}/${mission_id}`))
   }
 }
