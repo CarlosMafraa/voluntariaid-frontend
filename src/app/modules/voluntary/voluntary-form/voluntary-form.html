@@ -40,7 +40,7 @@
           <div class="col-4">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Passaporte</mat-label>
-              <input matInput formControlName="passaporte" required>
+              <input matInput formControlName="passaporte" mask="0000-0000" required>
               @if (voluntaryForm.get('passaporte')?.hasError('required')) {
                 <mat-error>
                   Passaporte é obrigatório

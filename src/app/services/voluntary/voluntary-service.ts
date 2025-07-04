@@ -1,7 +1,7 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment.development';
-import {firstValueFrom, lastValueFrom} from 'rxjs';
+import {firstValueFrom} from 'rxjs';
 import {VoluntaryResponse} from '../../shared/interfaces/voluntary-response';
 import {VoluntaryCreate} from '../../shared/interfaces/voluntary-create';
 import {PageResponse} from '../../shared/interfaces/page-response';
