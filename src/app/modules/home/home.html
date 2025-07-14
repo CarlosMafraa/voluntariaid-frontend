@@ -1,4 +1,41 @@
-<div>
-  <router-outlet></router-outlet>
+<div class="flex flex-column">
+  <div class="flex flex-column">
+    <div class="flex justify-content-center align-items-center gap-2">
+      <mat-icon class="text-gradient-button">favorite_border</mat-icon>
+      <h2 class="text-center text-gradient">Sistema de Voluntáriado</h2>
+    </div>
+    <span class="text-center text-gradient">Gerencie sua equipe de voluntários e organize missões de impacto social. Juntos podemos fazer a diferença na nossa comunidade.</span>
+  </div>
+  <div class="grid gap-2">
+    <div class="col flex justify-content-center my-4">
+      <app-card
+        color="primary-color"
+        secColor="primary-glow"
+        nameIcon="group"
+        nameButton="Voluntários"
+        title="Gestão de Voluntários"
+        subtitle="Cadastre e gerencie sua equipe de voluntários. Mantenha informações de contato e habilidades organizadas em um só lugar."
+        [list]="listVoluntary()"
+      ></app-card>
+    </div>
+    <div class="col flex justify-content-center my-4">
+      <app-card
+        color="second-color"
+        secColor="second-glow"
+        nameIcon="radar"
+        nameButton="Missões"
+        title="Gestão de Missões"
+        subtitle="Organize missões de voluntariado, defina objetivos e coordene atividades para maximizar o impacto social."
+        [list]="listMission()"
+      ></app-card>
+    </div>
+  </div>
+  <div class="cardInfo flex flex-column align-items-center gap-4 p-4 bg-gradient">
+    <mat-icon>favorite_border</mat-icon>
+    <h2>Pronto para começar?</h2>
+    <span class="text-color text-gradient">Escolha uma das opções acima para começar a organizar seu trabalho voluntário e fazer a diferença na sua comunidade.</span>
+    <button matButton="filled" class="text-gradient-button">
+      Começar com Voluntários
+    </button>
+  </div>
 </div>
-

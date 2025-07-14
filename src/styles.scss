@@ -1,20 +1,60 @@
 :root {
-  --prymary-color: #1469C0;
-  --second-color: #D7E3FF;
-  --color-white: #FFF8F8;
+  --background-primary: #F5F8FC;
+  --primary-color: #3C83F6;
+  --second-color: #16A249;
+  --second-glow: rgba(60, 217, 117, 0.5);
+  --color-white: #FFFF;
+  --color-yellow: #F8C630;
+  --start-color: #F59E0B;
   --color-red: #8F0045;
   --color-black: #000000;
   --color-gray-light: #DFDEE2;
   --color-gray-dark: #949498;
   --color-gray-header: #F1F5F9;
+  --primary-glow: rgba(76, 169, 255, 0.5);
+  --gradient-blue-to-white: linear-gradient(to right, var(--blue-base), var(--white));
+  --gradient-white-to-green: linear-gradient(to right, var(--white), var(--green-base));
+  --mission: 142 76% 36%;
+  --volunteer: 217 91% 60%;
+  --second-color-rgb: 22, 162, 73;
+  --primary-color-rgb: 60, 131, 246;
 }
 
 html, body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: var(--color-white);
+  background-color: var(--background-primary);
+  font-size: 14px;
 }
+
+.text-gradient {
+  background: linear-gradient(
+      to right,
+      var(--second-color),
+      var(--primary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-button {
+  background: linear-gradient(
+      to right,
+      var(--second-color),
+      var(--primary-color)
+  ) !important;
+}
+
+.bg-gradient {
+  background: linear-gradient(
+      to right,
+      rgba(var(--second-color-rgb), 0.4),
+      rgba(var(--primary-color-rgb), 0.4)
+  );
+}
+
+
 
 .mat-mdc-table {
   background-color: var(--color-white) !important;
@@ -49,8 +89,11 @@ html, body {
   padding: 0 8px;
   border-top: 1px solid var(--color-gray-light);
 }
+
 .view, .trash {
   border-radius: 6px;
   padding: 6px;
   transition: background-color 0.2s ease;
 }
+
+
