@@ -1,6 +1,6 @@
 <div class="flex flex-column background p-4" [style.--my-color-border]="'var(--' + secColor() + ')'">
   <div class="flex flex-column justify-content-center align-items-center">
-    <div class="iconBackground" [style.--my-color-background]="'var(--' + secColor() + ')'">
+    <div class="iconBackground flex justify-content-center align-items-center" [style.--my-color-background]="'var(--' + secColor() + ')'">
       <mat-icon class="color-icon" [style.--my-color]="'var(--' + color() + ')'">
         {{ nameIcon() }}
       </mat-icon>
@@ -24,10 +24,9 @@
   </div>
   <div class="p-2">
     <button matMiniFab class="w-full gap-2 buttonColor" [style.--my-color]="'var(--' + color() + ')'">
-      <span class="font-bold">Gerenciar {{ nameButton() }}</span>
+      Gerenciar {{ nameButton() }}
       <mat-icon iconPositionEnd>arrow_forward</mat-icon>
     </button>
   </div>
-
 </div>
 
