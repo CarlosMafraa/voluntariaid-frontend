@@ -1,0 +1,23 @@
+<div class="flex gap-4 px-3 py-2 card">
+  <div>
+    <button matButton="outlined" class="button button-home"
+            routerLink="/home"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+      <mat-icon>home</mat-icon>
+      Basic
+    </button>
+  </div>
+  <div>
+    <button matButton="outlined" class="button  button-voluntary" routerLink="/voluntary" routerLinkActive="active">
+      <mat-icon>group</mat-icon>
+      Voluntários
+    </button>
+  </div>
+  <div>
+    <button matButton="outlined" class="button button-mission" routerLink="/mission" routerLinkActive="active">
+      <mat-icon>radar</mat-icon>
+      Missões
+    </button>
+  </div>
+</div>

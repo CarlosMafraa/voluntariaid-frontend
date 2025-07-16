@@ -1,0 +1,30 @@
+.card{
+  background-color: var(--color-white);
+  border-radius: 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.button{
+  color: var(--color-black);
+  transition: transform 0.3s ease;
+  will-change: transform;
+
+  &:hover{
+    background-color: var(--color-yellow);
+    transform: scale(1.05);
+  }
+
+  &.active.button-voluntary{
+    background-color: var(--primary-color);
+    color: var(--color-white);
+  }
+
+  &.active.button-mission {
+    background-color: var(--second-color);
+    color: white;
+  }
+  &.active.button-home {
+    background-color: var(--start-color);
+    color: white;
+  }
+}
